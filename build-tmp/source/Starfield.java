@@ -1,7 +1,23 @@
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class Starfield extends PApplet {
+
 Particle[] bob = new Particle[2000];
 public final static int num = 1999;
 boolean backgroundShow = true;
-void setup()
+public void setup()
 {	
 	noStroke();
 	size(500,500);
@@ -12,7 +28,7 @@ void setup()
 	bob[num-1] = new OddballParticle();
 	background(0);
 }
-void draw()
+public void draw()
 {
 	if(backgroundShow==false)
 	{
@@ -24,7 +40,7 @@ void draw()
 		bob[i].move();
 	}
 }
-void mousePressed()
+public void mousePressed()
 {
 	backgroundShow = !backgroundShow;
 }
@@ -43,16 +59,16 @@ class NormalParticle implements Particle
 		g = (int)(Math.random()*255);
 		b = (int)(Math.random()*255);
 	}
-	void show()
+	public void show()
 	{
 		ellipse((float)x,(float)y,10,10);
 		fill(r,g,b);
 	}
-	void move()
+	public void move()
 	{
 		x = x + (Math.cos(angle)*speed);
 		y = y + (Math.sin(angle)*speed);
-		angle = angle + 0.027;
+		angle = angle + 0.027f;
 	}
 }
 interface Particle
@@ -75,7 +91,7 @@ class OddballParticle implements Particle
 		g = (int)(Math.random()*255);
 		b = (int)(Math.random()*255);
 	}
-	void show()
+	public void show()
 	{
 		r = (int)(Math.random()*255);
 		g = (int)(Math.random()*255);
@@ -83,13 +99,22 @@ class OddballParticle implements Particle
 		fill(r,g,b);
 		ellipse((float)x,(float)y,10,10);
 	}
-	void move()
+	public void move()
 	{
 		x = x + (Math.cos(angle)*speed);
 		y = y + (Math.sin(angle)*speed);
-		angle = angle + 0.027;
+		angle = angle + 0.027f;
 	}
 		
 }
 
 
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "Starfield" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
+  }
+}
