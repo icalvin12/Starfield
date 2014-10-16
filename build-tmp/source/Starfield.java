@@ -14,8 +14,8 @@ import java.io.IOException;
 
 public class Starfield extends PApplet {
 
-Particle[] bob = new Particle[2000];
-public final static int num = 1999;
+Particle[] bob = new Particle[1000];
+public final static int num = 999;
 boolean backgroundShow = true;
 public void setup()
 {	
