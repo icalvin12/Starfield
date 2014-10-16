@@ -15,13 +15,13 @@ import java.io.IOException;
 public class Starfield extends PApplet {
 
 Particle[] bob = new Particle[1000];
-public final static int num = 999;
+public final static int num = 1000;
 boolean backgroundShow = true;
 public void setup()
 {	
 	noStroke();
 	size(500,500);
-	for(int i=0;i<(num-1);i++)
+	for(int i=0;i<num;i++)
 	{
 		bob[i] = new NormalParticle();
 	}
