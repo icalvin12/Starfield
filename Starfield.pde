@@ -10,6 +10,7 @@ void setup()
 		bob[i] = new NormalParticle();
 	}
 	bob[num-1] = new OddballParticle();
+	bob[num-2] = new JumboParticle();
 	background(0);
 }
 void draw()
@@ -30,7 +31,7 @@ void mousePressed()
 }
 class NormalParticle implements Particle
 {
-	int r,g,b;
+	int r,g,b,diameter;
 	double x,y,speed,angle;
 	NormalParticle()
 	{
@@ -38,6 +39,7 @@ class NormalParticle implements Particle
 		y = 250;
 		//speed = Math.random()*5;
 		speed = 5;
+		diameter = 10;
 		angle = (Math.random()*2*(Math.PI));
 		r = (int)(Math.random()*255);
 		g = (int)(Math.random()*255);
@@ -45,7 +47,7 @@ class NormalParticle implements Particle
 	}
 	void show()
 	{
-		ellipse((float)x,(float)y,10,10);
+		ellipse((float)x,(float)y,diameter,diameter);
 		fill(r,g,b);
 	}
 	void move()
@@ -62,12 +64,13 @@ interface Particle
 }
 class OddballParticle implements Particle
 {
-	int r,g,b;
+	int r,g,b,diameter;
 	double x,y,speed,angle;
 	OddballParticle()
 	{
 		x = 250;
 		y = 250;
+		diameter = 10;
 		//speed = Math.random()*5;
 		speed = 5;
 		angle = (Math.random()*2*(Math.PI));
@@ -81,7 +84,7 @@ class OddballParticle implements Particle
 		g = (int)(Math.random()*255);
 		b = (int)(Math.random()*255);
 		fill(r,g,b);
-		ellipse((float)x,(float)y,10,10);
+		ellipse((float)x,(float)y,diameter,diameter);
 	}
 	void move()
 	{
@@ -92,4 +95,10 @@ class OddballParticle implements Particle
 		
 }
 
-
+class JumboParticle extends NormalParticle
+{
+	JumboParticle()
+	{
+		diameter = 30;
+	}
+}
